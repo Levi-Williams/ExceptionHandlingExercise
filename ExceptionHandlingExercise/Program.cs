@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace ExceptionHandlingExercise
 {
@@ -21,8 +22,34 @@ namespace ExceptionHandlingExercise
 
 
             //TODO START HERE:
+
+            char[] arr = { 'A', 'B', 'C', '1', '2', '3', '4', '5', '6' };
+
+            var numbers = new List<int> { };
+
+            string str;
+
+
             
             // Make a foreach loop to iterate through your character array
+
+            foreach(char character in arr)
+            {
+
+                try
+                {
+                   str = character.ToString(); 
+                   
+                   int.Parse(str);
+
+                    numbers.Add(int.Parse(str));
+
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine($"Unable to Parse '{character}'");
+                }
+            }
             
                 // Now create a try catch
                 
@@ -39,10 +66,10 @@ namespace ExceptionHandlingExercise
                 
             
 
-            //foreach (var num in numbers)
-            //{
-            //    Console.WriteLine(num);
-            //}
+            foreach (var num in numbers)
+            {
+                Console.WriteLine(num);
+            }
         }
     }
 }
